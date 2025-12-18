@@ -2,138 +2,194 @@
 <html lang="kk">
 <head>
 <meta charset="UTF-8">
-<title>Debit Card</title>
+<title>Debit Card Full</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    color: #fff;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
 
-  .container {
-    display: flex;
-    gap: 40px;
-  }
+.wrapper {
+  display: flex;
+  gap: 40px;
+}
 
-  /* CARD */
-  .debit-card {
-    width: 360px;
-    height: 220px;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
-  }
+/* ===== CARD ===== */
+.card {
+  width: 380px;
+  height: 240px;
+  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.6);
+  position: relative;
+}
 
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-  }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
 
-  .chip {
-    width: 55px;
-    height: 40px;
-    background: linear-gradient(135deg, #facc15, #ca8a04);
-    border-radius: 8px;
-    margin: 25px 0;
-  }
+.chip {
+  width: 60px;
+  height: 42px;
+  background: linear-gradient(135deg, #fde047, #ca8a04);
+  border-radius: 8px;
+  margin: 28px 0 18px;
+}
 
-  .card-number {
-    font-size: 20px;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-  }
+.card-number {
+  font-size: 21px;
+  letter-spacing: 3px;
+  margin-bottom: 22px;
+}
 
-  .card-bottom {
-    display: flex;
-    justify-content: space-between;
-  }
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .card-bottom small {
-    font-size: 10px;
-    opacity: 0.8;
-  }
+.card-footer small {
+  font-size: 10px;
+  opacity: .85;
+}
 
-  /* FORM */
-  .form {
-    background: #020617;
-    padding: 25px;
-    border-radius: 15px;
-    width: 300px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
+.card-footer div div {
+  margin-top: 4px;
+  font-size: 14px;
+}
 
-  .form h2 {
-    margin-bottom: 15px;
-    text-align: center;
-  }
+/* CVV */
+.cvv {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  text-align: right;
+}
 
-  .form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-  }
+.cvv small {
+  font-size: 10px;
+}
 
-  .form input:focus {
-    outline: 2px solid #2563eb;
-  }
+.cvv div {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+/* ===== FORM ===== */
+.form {
+  width: 320px;
+  background: #020617;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 25px 45px rgba(0,0,0,.5);
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.form label {
+  font-size: 13px;
+  opacity: .9;
+}
+
+.form input {
+  width: 100%;
+  margin: 6px 0 14px;
+  padding: 11px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.form input:focus {
+  outline: 2px solid #2563eb;
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: -35px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  opacity: .7;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div>
+  <div class="wrapper">
 
-  <!-- CARD -->
-  <div class="debit-card">
-    <div class="card-top">
-      <span>KZ BANK</span>
-      <span>DEBIT</span>
-    </div>
-
-    <div class="chip"></div>
-
-    <div class="card-number" id="cardNumber">
-      4400 0000 0000 0000
-    </div>
-
-    <div class="card-bottom">
-      <div>
-        <small>Card Holder</small>
-        <div id="cardName">YOUR NAME</div>
+    <!-- CARD -->
+    <div class="card">
+      <div class="card-header">
+        <span>KZ BANK</span>
+        <span>DEBIT</span>
       </div>
-      <div>
-        <small>Valid Thru</small>
-        <div id="cardDate">00/00</div>
+
+      <div class="cvv">
+        <small>CVV</small>
+        <div id="cvv">000</div>
+      </div>
+
+      <div class="chip"></div>
+
+      <div class="card-number" id="number">
+        4400 0000 0000 0000
+      </div>
+
+      <div class="card-footer">
+        <div>
+          <small>Card Holder</small>
+          <div id="name">YOUR NAME</div>
+        </div>
+        <div>
+          <small>Valid Thru</small>
+          <div id="date">00/00</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        © 2025 | Құқық қорғалған
       </div>
     </div>
+
+    <!-- FORM -->
+    <div class="form">
+      <h2>Карта деректері</h2>
+
+      <label>Карта нөмірі</label>
+      <input type="text" placeholder="4400 1234 5678 9010"
+        oninput="number.innerText = this.value">
+
+      <label>Аты-жөні</label>
+      <input type="text" placeholder="ALIYEV NUR"
+        oninput="name.innerText = this.value.toUpperCase()">
+
+      <label>Жарамдылық мерзімі</label>
+      <input type="text" placeholder="MM/YY"
+        oninput="date.innerText = this.value">
+
+      <label>CVV</label>
+      <input type="text" placeholder="123"
+        oninput="cvv.innerText = this.value">
+    </div>
+
   </div>
-
-  <!-- FORM -->
-  <div class="form">
-    <h2>Карта деректері</h2>
-
-    <input type="text" placeholder="Карта нөмірі"
-      oninput="cardNumber.innerText = this.value">
-
-    <input type="text" placeholder="Аты-жөні"
-      oninput="cardName.innerText = this.value.toUpperCase()">
-
-    <input type="text" placeholder="MM/YY"
-      oninput="cardDate.innerText = this.value">
-  </div>
-
 </div>
 
 </body>
