@@ -1,43 +1,140 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Debit Card</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+
+  .container {
+    display: flex;
+    gap: 40px;
+  }
+
+  /* CARD */
+  .debit-card {
+    width: 360px;
+    height: 220px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  .chip {
+    width: 55px;
+    height: 40px;
+    background: linear-gradient(135deg, #facc15, #ca8a04);
+    border-radius: 8px;
+    margin: 25px 0;
+  }
+
+  .card-number {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+  }
+
+  .card-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-bottom small {
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  /* FORM */
+  .form {
+    background: #020617;
+    padding: 25px;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .form h2 {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .form input:focus {
+    outline: 2px solid #2563eb;
+  }
+</style>
+</head>
+
 <body>
-  	
-  	<!-- background circles -->
-    <div class="circles">
-      <div class="circle circle-1"></div>
-      <div class="circle circle-2"></div>
+
+<div class="container">
+
+  <!-- CARD -->
+  <div class="debit-card">
+    <div class="card-top">
+      <span>KZ BANK</span>
+      <span>DEBIT</span>
     </div>
-  
-  	
-    <div class="container">
-      <h1>Enter Your Card Details</h1>
-      
-      <!-- Card -->
-      <div class="card">
-        <img class="logo" src="visa.png" />
-        
-        <!-- Card Number -->
-        <label>Card Number</label>
-        <input class="card-number" placeholder="1234 1234 1234 1234"           type="text" required maxlength="16" />
-        
-        <div class="container2">
-          
-          <!-- Card Holder -->
-          <div class="name">
-            <label>Card Holder</label>
-            <input class="card-name" placeholder="ISRAEL ISRAELI" type="text" required />
-          </div>
-          
-          <!-- Date -->
-          <div class="expiration-date">
-            <label>Exp. Date</label>
-            <input class="card-name" placeholder="10/25" type="text" maxlength="5" required />
-          </div>
-          
-          <!-- Cvv -->
-          <div class="ccv">
-            <label>CCV</label>
-            <input class="card-name" placeholder="123" type="text" maxlength="3" required />
-          </div>
-        </div>
+
+    <div class="chip"></div>
+
+    <div class="card-number" id="cardNumber">
+      4400 0000 0000 0000
+    </div>
+
+    <div class="card-bottom">
+      <div>
+        <small>Card Holder</small>
+        <div id="cardName">YOUR NAME</div>
+      </div>
+      <div>
+        <small>Valid Thru</small>
+        <div id="cardDate">00/00</div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- FORM -->
+  <div class="form">
+    <h2>Карта деректері</h2>
+
+    <input type="text" placeholder="Карта нөмірі"
+      oninput="cardNumber.innerText = this.value">
+
+    <input type="text" placeholder="Аты-жөні"
+      oninput="cardName.innerText = this.value.toUpperCase()">
+
+    <input type="text" placeholder="MM/YY"
+      oninput="cardDate.innerText = this.value">
+  </div>
+
+</div>
+
+</body>
+</html>
