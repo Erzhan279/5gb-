@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жаңа Жылдық Сыйлық</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+            z-index: 10;
+        }
+
+        /* Операторлар логотиптерінің блогы */
+        .operators {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .operator-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid white;
+            transition: transform 0.3s;
+        }
+
+        .operator-badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Әр оператордың өз түсі */
+        .activ { background: #6c5ce7; color: white; } /* Күлгін */
+        .tele2 { background: #000000; color: white; } /* Қара */
+        .beeline { background: #fffa65; color: #333; } /* Сары */
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: #ff4757;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            font-weight: 400;
+        }
+
+        .gift-box {
+            font-size: 70px;
+            margin: 10px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <div class="operators">
+            <div class="operator-badge activ">Activ</div>
+            <div class="operator-badge tele2">Tele2</div>
+            <div class="operator-badge beeline">Bee</div>
+        </div>
+
+        <div class="gift-box">🎁</div>
+        
+        <h1>5 GB <br> ПОДАРОК <br> НА НОВЫЙ ГОД</h1>
+        
+        <h2>Жаңа жылға 5 ГБ сыйлық!</h2>
+        
+        <p style="font-size: 0.9rem; margin-bottom: 20px;">
+            Барлық операторларға қолжетімді. <br> Төмендегі түймені басыңыз.
+        </p>
+
+        <a href="#" class="btn">Сыйлықты алу / Получить</a>
+
+        <div class="footer-note">
+            Акция 31 желтоқсанға дейін жарамды.
+        </div>
+    </div>
+
+    <script>
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.classList.add('snowflake');
+            snow.textContent = '❄';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snow.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.getElementById('snow-container').appendChild(snow);
+            setTimeout(() => snow.remove(), 5000);
+        }
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
