@@ -1,75 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Glass Card</title>
+    <title>Ultra Premium Card UI</title>
     <style>
         :root {
-            --bg-color: #030712;
-            --card-glass: rgba(255, 255, 255, 0.07);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --accent: #6366f1;
+            --bg-color: #0a0a0c;
+            /* Карта градиенті - заманауи күміс/қара металл стилі */
+            --card-bg: linear-gradient(135deg, #232526 0%, #414345 100%);
+            --accent-color: #ffffff;
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
-            color: white;
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            overflow: hidden;
+            color: white;
+            padding: 20px;
         }
 
         .hint {
-            margin-bottom: 20px;
-            font-size: 0.8rem;
-            color: #4b5563;
+            margin-bottom: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #555;
             text-transform: uppercase;
-            letter-spacing: 3px;
         }
 
-        /* --- Realistic Card UI --- */
-        .card-container {
-            perspective: 1000px;
-            width: 440px;
-            height: 270px;
-            position: relative;
-        }
-
+        /* --- Card Design --- */
         .card {
             width: 100%;
-            height: 100%;
-            background: var(--card-glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
+            max-width: 420px;
+            height: 250px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            position: relative;
             padding: 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5), 
+                        inset 0 0 20px rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            z-index: 10;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            transition: all 0.5s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px) rotateX(2deg);
-            box-shadow: 0 30px 60px -12px rgba(99, 102, 241, 0.2);
+        /* Картаның үстіндегі жарқыл (Gloss) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .card-top {
@@ -80,169 +81,178 @@
 
         .chip {
             width: 50px;
-            height: 40px;
-            background: linear-gradient(135deg, #ffd700, #b8860b);
-            border-radius: 8px;
+            height: 38px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e29c 50%, #b8860b 100%);
+            border-radius: 6px;
             position: relative;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
         }
 
         .visa-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
             font-style: italic;
-            font-weight: bold;
-            font-size: 1.5rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            letter-spacing: -1px;
         }
 
-        /* --- Card Inputs Styling --- */
-        .card input {
+        /* --- Inputs Styling --- */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        input {
             background: transparent;
             border: none;
             color: white;
-            width: 100%;
-            font-size: 1rem;
             outline: none;
-            padding: 5px;
-            border-radius: 4px;
-            transition: background 0.2s;
+            padding: 5px 0;
+            width: 100%;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
-        .card input:hover, .card input:focus {
-            background: rgba(255, 255, 255, 0.05);
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        input:focus {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         .number-input {
-            font-size: 1.6rem !important;
+            font-size: 1.6rem;
             letter-spacing: 4px;
-            margin-top: 20px;
             text-align: center;
+            margin: 15px 0;
         }
 
         .bottom-row {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 15px;
-            align-items: flex-end;
-        }
-
-        .label {
-            font-size: 0.65rem;
-            color: #9ca3af;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            display: block;
         }
 
         .name-input {
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .expiry-input, .cvv-input {
+            font-size: 0.9rem;
             text-align: center;
         }
 
         /* --- Footer --- */
         footer {
-            margin-top: 40px;
-            color: #4b5563;
-            font-size: 0.85rem;
-            font-weight: 500;
+            margin-top: 50px;
+            color: #333;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
-        /* Chrome, Safari, Edge, Opera - Remove arrows */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        /* Анимация Focus кезінде */
+        .card:has(input:focus) {
+            transform: scale(1.03) translateY(-10px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 60px 120px rgba(0,0,0,0.6);
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                max-width: 350px;
+                height: 220px;
+                padding: 20px;
+            }
+            .number-input { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hint">Click on details to edit</div>
+    <div class="hint">Мәліметтерді басып өзгертіңіз</div>
 
-    <div class="card-container">
-        <div class="card" id="card">
-            <div class="card-top">
-                <div class="chip"></div>
-                <div class="visa-logo">VISA</div>
+    <div class="card">
+        <div class="card-top">
+            <div class="chip"></div>
+            <div class="visa-logo">VISA</div>
+        </div>
+
+        <div class="input-group">
+            <span class="label">Card Number</span>
+            <input type="text" id="cardNumber" class="number-input" placeholder="0000 0000 0000 0000" maxlength="19">
+        </div>
+
+        <div class="bottom-row">
+            <div class="input-group">
+                <span class="label">Card Holder</span>
+                <input type="text" id="cardHolder" class="name-input" placeholder="NAME SURNAME" maxlength="22">
             </div>
-
-            <div class="number-section">
-                <span class="label">Card Number</span>
-                <input type="text" class="number-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+            <div class="input-group">
+                <span class="label">Expires</span>
+                <input type="text" id="cardExpiry" class="expiry-input" placeholder="MM/YY" maxlength="5">
             </div>
-
-            <div class="bottom-row">
-                <div class="info">
-                    <span class="label">Card Holder</span>
-                    <input type="text" class="name-input" id="cardName" placeholder="NAME SURNAME" maxlength="22">
-                </div>
-                <div class="info">
-                    <span class="label">Expires</span>
-                    <input type="text" class="expiry-input" id="cardExpiry" placeholder="MM/YY" maxlength="5">
-                </div>
-                <div class="info">
-                    <span class="label">CVV</span>
-                    <input type="password" class="cvv-input" id="cardCvv" placeholder="***" maxlength="3">
-                </div>
+            <div class="input-group">
+                <span class="label">CVV</span>
+                <input type="password" id="cardCvv" class="cvv-input" placeholder="***" maxlength="3">
             </div>
         </div>
     </div>
 
-    <footer>
-        © 2025 | Құқық қорғалған
-    </footer>
+    <footer>© 2025 | Құқық қорғалған</footer>
 
     <script>
-        const cardNumber = document.getElementById('cardNumber');
-        const cardName = document.getElementById('cardName');
+        const cardNo = document.getElementById('cardNumber');
+        const cardHolder = document.getElementById('cardHolder');
         const cardExpiry = document.getElementById('cardExpiry');
         const cardCvv = document.getElementById('cardCvv');
 
-        // Number Formatting (0000 0000 0000 0000)
-        cardNumber.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, ''); // Тек сандар
-            let formatted = '';
-            for (let i = 0; i < value.length; i++) {
-                if (i > 0 && i % 4 === 0) formatted += ' ';
-                formatted += value[i];
-            }
-            e.target.value = formatted;
+        // Нөмірді 4-тен бөліп жазу
+        cardNo.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '');
+            let final = val.match(/.{1,4}/g)?.join(' ') || '';
+            e.target.value = final;
         });
 
-        // Name Formatting (Uppercase)
-        cardName.addEventListener('input', (e) => {
+        // Есімді бас әріпке айналдыру
+        cardHolder.addEventListener('input', (e) => {
             e.target.value = e.target.value.toUpperCase();
         });
 
-        // Expiry Formatting (MM/YY)
+        // Мерзімді форматтау (MM/YY)
         cardExpiry.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) {
-                e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length >= 2) {
+                e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
             } else {
-                e.target.value = value;
+                e.target.value = val;
             }
         });
 
-        // CVV - Тек сандар
+        // CVV тек сандар
         cardCvv.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D/g, '');
         });
 
-        // Картаның қозғалыс эффектісі (Mouse Tilt)
-        const card = document.getElementById('card');
+        // Картаның қозғалысы (Жайлылық үшін)
         document.addEventListener('mousemove', (e) => {
-            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
-
-        // Тышқан картадан шыққанда орнына келуі
-        document.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            if(window.innerWidth > 768) {
+                const card = document.querySelector('.card');
+                let x = (window.innerWidth / 2 - e.pageX) / 30;
+                let y = (window.innerHeight / 2 - e.pageY) / 30;
+                card.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
+            }
         });
     </script>
 </body>
